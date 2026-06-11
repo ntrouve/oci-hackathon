@@ -2,6 +2,10 @@
 
 Territory Signal Copilot is a hackathon MVP for OCI sales reps entering a new territory. It turns an uploaded account list into a signal-ranked prospecting workspace with OCI narratives, persona recommendations, and copyable email drafts.
 
+## Live Demo
+
+https://129-146-81-29.sslip.io/
+
 ## Demo Workflow
 
 1. Upload a CSV of accounts or load the sample territory.
