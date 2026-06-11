@@ -27,82 +27,108 @@ const personas = [
 
 const sampleRows = [
   {
-    rank: "1",
-    account: "Norstella",
-    industry: "Life Sciences / Data & AI",
-    arrPotential: "Strongest data/AI fit in the whole list. Norstella positions itself around life-sciences data, real-world data, AI, forecasting, trial design, market access, and patient activation, which maps directly to high-value OCI data, AI, GPU, and database conversations.",
-    ociWedge: "OCI Data Science, GPU/AI, Autonomous Database, data lakehouse, secure analytics platform"
+    "PARTY UNIQUE NAME": "Seegrid Corporation (PITTSBURGH, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "216 Ridc Park West Dr,PITTSBURGH,PA 15275",
+    "COUNTRY": "United States",
+    "GU NAME": "Seegrid Corporation"
   },
   {
-    rank: "2",
-    account: "Customers Bank",
-    industry: "Financial Services",
-    arrPotential: "Large regulated financial institution with current AI transformation momentum. Customers Bank recently announced a multiyear OpenAI collaboration and described itself as having nearly $26B in assets, which suggests executive appetite for AI-enabled operating-model change.",
-    ociWedge: "Secure AI/data platform, regulated workloads, DR, database modernization"
+    "PARTY UNIQUE NAME": "CLARION HOSPITAL (CLARION, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "1 HOSPITAL DR,CLARION,PA 16214",
+    "COUNTRY": "United States",
+    "GU NAME": "Independence Health System"
   },
   {
-    rank: "3",
-    account: "Wawa Food Markets",
-    industry: "Retail",
-    arrPotential: "Large multi-location convenience, fuel, food, mobile ordering, loyalty, and store-operations profile. Wawa's site emphasizes store locations, ordering, delivery, fleet cards, fuel, and EV charging, all of which point to high-volume operational data and customer-facing digital systems.",
-    ociWedge: "Retail analytics, app modernization, DR, data platform, edge/store systems"
+    "PARTY UNIQUE NAME": "Capital Blue Cross (Harrisburg, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "2500 Elmerton Ave,Harrisburg,PA 17177",
+    "COUNTRY": "United States",
+    "GU NAME": "Capital Blue Cross"
   },
   {
-    rank: "4",
-    account: "Independence Health System",
-    industry: "Health",
-    arrPotential: "Strong regulated healthcare opportunity with enough scale for a meaningful OCI deal. Independence Health says it includes five hospitals, 925 beds, more than 1,000 providers, and 7,300 employees.",
-    ociWedge: "Healthcare DR, ransomware resilience, VMware, secure landing zone, database workloads"
+    "PARTY UNIQUE NAME": "Butler Health System - Butler Memorial Hospital (Butler, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "911 East Brady Street,Butler,PA 16001",
+    "COUNTRY": "United States",
+    "GU NAME": "Independence Health System"
   },
   {
-    rank: "5",
-    account: "Excelitas Technologies",
-    industry: "High Technology / Industrial Manufacturing",
-    arrPotential: "Advanced photonics, sensing, imaging, optics, semiconductor, aerospace/defense, life sciences, and industrial automation profile. Excelitas explicitly serves life sciences, advanced industrial, next-gen semiconductor, aerospace/defense, AI, IoT, and precision medicine markets.",
-    ociWedge: "HPC/engineering workloads, AI/vision, data platform, secure manufacturing workloads"
+    "PARTY UNIQUE NAME": "Excelitas Technologies Corporation (FAIRPORT, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "2545 Railroad St,Pittsburgh,PA 15222",
+    "COUNTRY": "United States",
+    "GU NAME": "Aea Investors LLC"
   },
   {
-    rank: "6",
-    account: "Capital Blue Cross",
-    industry: "Health / Insurance",
-    arrPotential: "Health insurance payer profile means regulated member data, claims, analytics, compliance, security, and digital engagement workloads. This is a good fit for a higher-ARR data/security/DR play, though sales cycles may be slower than pure tech accounts.",
-    ociWedge: "Secure data platform, analytics, DR, compliance landing zone, database modernization"
+    "PARTY UNIQUE NAME": "Minitab, LLC (State College, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "1829 Pine Hall Rd State College,State College,Pennsylvania 16801",
+    "COUNTRY": "United States",
+    "GU NAME": "Minitab, LLC"
   },
   {
-    rank: "7",
-    account: "Minitab",
-    industry: "High Technology / Software",
-    arrPotential: "Software and analytics company with cloud product motion. Minitab markets statistical software, predictive analytics, and cloud-enabled data analysis, which makes OCI cost/performance, database, and application hosting relevant.",
-    ociWedge: "SaaS infrastructure, database, analytics workloads, cloud cost optimization"
+    "PARTY UNIQUE NAME": "Norstella (Yardley, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "1020 Stony Hill Rd #150,Yardley,PA 19067",
+    "COUNTRY": "United States",
+    "GU NAME": "Norstella"
   },
   {
-    rank: "8",
-    account: "Seegrid Corporation",
-    industry: "Industrial Manufacturing / Robotics",
-    arrPotential: "Robotics and autonomous mobile robot company with data, automation, fleet, AI/vision, and industrial operations fit. Seegrid positions itself around autonomous material handling, manufacturing, warehousing, and scalable AMR deployments.",
-    ociWedge: "AI/robotics data platform, GPU/vision workloads, app hosting, telemetry analytics"
+    "PARTY UNIQUE NAME": "Members 1st Federal Credit Union (Mechanicsburg, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "Procurement 5000 Louise DrPO Box 40,Mechanicsburg,PA 17055",
+    "COUNTRY": "United States",
+    "GU NAME": "Members 1st Federal Credit Union"
   },
   {
-    rank: "9",
-    account: "Members 1st Federal Credit Union",
-    industry: "Financial Services",
-    arrPotential: "Credit union with broad branch footprint in Pennsylvania and regulated member-data needs. Its branch/ATM locator shows many locations across PA, which points to digital banking, security, DR, and distributed operations needs.",
-    ociWedge: "DR, secure banking workloads, data analytics, database modernization"
+    "PARTY UNIQUE NAME": "Independence Health System (Greensburg, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "Administrative office532 west pittsburgh street,,Greensburg,PA 15601",
+    "COUNTRY": "United States",
+    "GU NAME": "Independence Health System"
   },
   {
-    rank: "10",
-    account: "L.B. Foster Company",
-    industry: "Industrial Manufacturing",
-    arrPotential: "Infrastructure, rail, monitoring, and industrial technology profile with likely operational, engineering, and field-data workloads. L.B. Foster describes rail products, friction management, total track monitoring, technologies, and critical rail infrastructure/safety solutions.",
-    ociWedge: "Industrial data platform, IoT/monitoring analytics, VMware, DR, database workloads"
+    "PARTY UNIQUE NAME": "Customers Bank (Phoenixville, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "99 Bridge St.,Phoenixville,PA 19460",
+    "COUNTRY": "United States",
+    "GU NAME": "Customers Bancorp, Inc."
+  },
+  {
+    "PARTY UNIQUE NAME": "L. B. Foster Company (PITTSBURGH, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "415 Holiday Dr Ste 1,PITTSBURGH,PA 15220",
+    "COUNTRY": "United States",
+    "GU NAME": "L. B. Foster Company"
+  },
+  {
+    "PARTY UNIQUE NAME": "Wawa Food Markets (Wawa, US)",
+    "Rep": "jason.oliveira@oracle.com",
+    "DESCRIPTION": "PA: Pittsburgh, Harrisburg, Erie, Malvern",
+    "STREET ADDRESS": "Red Roof Baltimore Pike,Wawa,PA 19063",
+    "COUNTRY": "United States",
+    "GU NAME": "Wawa"
   }
 ];
 
 const sampleAccounts = sampleRows.map(createAccountFromRecord);
 
 let accounts = [...sampleAccounts];
-let selectedAccountId = accounts[0].id;
-let selectedPersonaId = recommendedPersona(accounts[0]).id;
+let selectedAccountId = topAccount(accounts).id;
+let selectedPersonaId = recommendedPersona(selectedAccount()).id;
 let activeFilter = "all";
 let toastTimer = null;
 
@@ -130,8 +156,8 @@ const els = {
 
 document.getElementById("load-sample").addEventListener("click", () => {
   accounts = [...sampleAccounts];
-  selectedAccountId = accounts[0].id;
-  selectedPersonaId = recommendedPersona(accounts[0]).id;
+  selectedAccountId = topAccount(accounts).id;
+  selectedPersonaId = recommendedPersona(selectedAccount()).id;
   activeFilter = "all";
   document.querySelectorAll(".filter-chip").forEach((button) => {
     button.classList.toggle("active", button.dataset.filter === "all");
@@ -150,8 +176,8 @@ document.getElementById("csv-upload").addEventListener("change", async (event) =
     return;
   }
   accounts = parsed.map(createAccountFromRecord);
-  selectedAccountId = accounts[0].id;
-  selectedPersonaId = recommendedPersona(accounts[0]).id;
+  selectedAccountId = topAccount(accounts).id;
+  selectedPersonaId = recommendedPersona(selectedAccount()).id;
   render();
   showToast(`${accounts.length} accounts analyzed`);
   event.target.value = "";
@@ -280,7 +306,7 @@ function renderPersonas(account) {
 
 function renderNarrative(account, persona) {
   const signalNames = account.signals.slice(0, 2).map((signal) => signal.title.toLowerCase()).join(" and ");
-  els.narrative.textContent = `${account.name} is showing credible public signals around ${signalNames}. For a ${persona.label}, the OCI story should ${persona.hook}. The right outreach is not a generic cloud pitch; it should connect the account's public priorities to a practical next step: ${account.ociWedge || "a focused architecture conversation, workload fit review, or AI/data readiness workshop"}.`;
+  els.narrative.textContent = `${account.name} is showing territory signals around ${signalNames}. For a ${persona.label}, the OCI story should ${persona.hook}. The right outreach should connect the imported account record, the ${account.groupName} GU context, and the local ${account.territory} patch to a practical next step: ${account.ociWedge}.`;
   els.outcomeList.innerHTML = account.outcomes.map(([term, value]) => `
     <div>
       <dt>${escapeHtml(term)}</dt>
@@ -291,14 +317,13 @@ function renderNarrative(account, persona) {
 
 function renderEmail(account, persona) {
   const primary = account.signals[0];
-  const secondary = account.signals[1] || account.signals[0];
-  const subject = `${account.name}: connecting ${primary.title.toLowerCase()} to OCI outcomes`;
+  const subject = `${account.groupName}: OCI conversation for ${account.location}`;
   const body = [
     `Hi {{first_name}},`,
     "",
-    `I noticed ${account.name} is a strong fit for an OCI conversation because ${account.arrPotential || `${primary.title.toLowerCase()} and ${secondary.title.toLowerCase()} are showing up as account signals`}`,
+    `I am working through the ${account.territory} territory and noticed ${account.name} is tied to ${account.groupName}${account.location ? ` in ${account.location}` : ""}. The imported account record gives us a practical starting point: ${primary.detail}`,
     "",
-    `For a ${persona.label}, I think the relevant OCI conversation is how to ${persona.hook}. The wedge I would lead with is ${account.ociWedge || "cloud infrastructure, data services, AI readiness, and operating controls"}, depending on which workloads matter most right now.`,
+    `For a ${persona.label}, I think the relevant OCI conversation is how to ${persona.hook}. The wedge I would lead with is ${account.ociWedge}, then validate which workload or initiative matters most right now.`,
     "",
     "Would it be useful to compare notes for 20 minutes and identify one workload or initiative where OCI could support the outcome your team is already pursuing?",
     "",
@@ -315,13 +340,17 @@ function selectedAccount() {
   return accounts.find((account) => account.id === selectedAccountId) || accounts[0];
 }
 
+function topAccount(accountList) {
+  return [...accountList].sort((a, b) => b.score - a.score)[0] || accountList[0];
+}
+
 function selectedPersona() {
   return personas.find((persona) => persona.id === selectedPersonaId) || personas[0];
 }
 
 function recommendedPersona(account) {
   if (account.targetPersonaId) return personas.find((persona) => persona.id === account.targetPersonaId) || personas[0];
-  const text = `${account.industry} ${account.arrPotential} ${account.ociWedge}`.toLowerCase();
+  const text = `${account.name} ${account.groupName} ${account.industry} ${account.accountFit} ${account.ociWedge}`.toLowerCase();
   if (/(data & ai|data\/ai|gpu\/ai|gpu|ai\/robotics|data science|forecasting|real-world data|robotics|vision)/.test(text)) {
     return personas.find((persona) => persona.id === "data-ai");
   }
@@ -352,7 +381,7 @@ function parseCsvAccounts(text) {
   const lines = text.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
   if (!lines.length) return [];
   const first = splitCsvLine(lines[0]).map(normalizeHeader);
-  const hasHeader = first.some((value) => ["account", "accountname", "company", "companyname", "name"].includes(value));
+  const hasHeader = first.some((value) => ["partyuniquename", "account", "accountname", "company", "companyname", "name"].includes(value));
   const header = hasHeader ? first : [];
   const dataLines = hasHeader ? lines.slice(1) : lines;
   const records = dataLines.map((line) => {
@@ -397,42 +426,55 @@ function splitCsvLine(line) {
 
 function createAccountFromRecord(record, index) {
   const cleanName = accountNameFromRecord(record) || `Uploaded Account ${index + 1}`;
-  const rank = Number(record.rank) || index + 1;
-  const industry = valueFromRecord(record, ["industry"]) || "Unknown industry";
-  const arrPotential = valueFromRecord(record, ["whythishas500karrpotential", "whythishasarrpotential", "arrpotential", "territorynotes", "notes"]) || `${cleanName} has been enriched with a demo signal profile based on public-account research patterns.`;
-  const ociWedge = valueFromRecord(record, ["bestociwedge", "ociwedge", "wedge", "usecase"]) || "OCI data platform, AI services, database modernization, and resilient infrastructure";
+  const groupName = valueFromRecord(record, ["guname", "gu", "globalultimate", "parentaccount"]) || cleanCompanyName(cleanName);
+  const rep = valueFromRecord(record, ["rep", "salesrep", "owner"]) || "Unassigned rep";
+  const territory = valueFromRecord(record, ["description", "territory", "territorydescription"]) || "Imported territory";
+  const streetAddress = valueFromRecord(record, ["streetaddress", "address", "street"]) || "Address not provided";
+  const country = valueFromRecord(record, ["country"]) || "Country not provided";
+  const location = locationFromRecord(cleanName, streetAddress);
+  const industry = valueFromRecord(record, ["industry"]) || inferIndustry(`${cleanName} ${groupName}`);
+  const explicitFit = valueFromRecord(record, ["whythishas500karrpotential", "whythishasarrpotential", "arrpotential", "territorynotes", "notes"]);
+  const accountFit = explicitFit || `${cleanName} is a ${country} territory record assigned to ${rep}, mapped to ${groupName}, and located at ${streetAddress}.`;
+  const ociWedge = valueFromRecord(record, ["bestociwedge", "ociwedge", "wedge", "usecase"]) || inferOciWedge(industry, `${cleanName} ${groupName}`);
   const targetPersonaId = personaIdFromText(valueFromRecord(record, ["targetpersona", "persona"]));
-  const tags = tagsFromText(`${industry} ${arrPotential} ${ociWedge}`);
+  const rank = Number(valueFromRecord(record, ["rank"]));
+  const tags = tagsFromText(`${cleanName} ${groupName} ${industry} ${accountFit} ${ociWedge}`);
   return {
     id: slugify(cleanName),
     name: cleanName,
     industry,
-    score: scoreFromRank(rank),
-    owner: `Rank #${rank} ARR opportunity`,
-    rank,
-    arrPotential,
+    score: rank ? scoreFromRank(rank) : scoreFromProfile(`${cleanName} ${groupName}`, industry, index),
+    owner: rep,
+    rank: rank || index + 1,
+    groupName,
+    rep,
+    territory,
+    streetAddress,
+    country,
+    location,
+    accountFit,
     ociWedge,
     targetPersonaId,
     tags,
-    summary: arrPotential,
+    summary: `${cleanName} is an imported territory account for ${territory}, assigned to ${rep}. The record maps to ${groupName} and gives the rep a focused local entry point for ${ociWedge}.`,
     signals: [
       {
-        type: tags[0] || "modernization",
-        title: `$500K ARR potential`,
-        detail: arrPotential,
-        source: `Uploaded account ranking #${rank}`
+        type: "modernization",
+        title: "Territory assignment",
+        detail: `${rep} owns this record in ${territory}.`,
+        source: "Uploaded territory workbook"
       },
       {
-        type: tags[1] || tags[0] || "modernization",
-        title: "Best OCI wedge",
+        type: tags.includes("security") ? "security" : tags[0] || "modernization",
+        title: "GU and location context",
+        detail: `${cleanName} rolls up to ${groupName}; address: ${streetAddress}; country: ${country}.`,
+        source: "Uploaded territory workbook"
+      },
+      {
+        type: tags.includes("ai") ? "ai" : tags.includes("security") ? "security" : "modernization",
+        title: "Suggested OCI wedge",
         detail: ociWedge,
-        source: "Account planning CSV"
-      },
-      {
-        type: tags.includes("security") ? "security" : "modernization",
-        title: "Account priority",
-        detail: `${cleanName} is ranked #${rank} in the uploaded territory plan, indicating a high-priority outreach motion for this patch.`,
-        source: "Territory prioritization"
+        source: "Generated from workbook fields"
       }
     ],
     outcomes: outcomesFromWedge(ociWedge)
@@ -440,7 +482,7 @@ function createAccountFromRecord(record, index) {
 }
 
 function accountNameFromRecord(record) {
-  return valueFromRecord(record, ["account", "accountname", "company", "companyname", "name"]);
+  return valueFromRecord(record, ["partyuniquename", "account", "accountname", "company", "companyname", "name"]);
 }
 
 function valueFromRecord(record, keys) {
@@ -458,6 +500,58 @@ function normalizeHeader(value) {
 
 function scoreFromRank(rank) {
   return Math.max(68, Math.min(98, 101 - rank * 3));
+}
+
+function scoreFromProfile(name, industry, index) {
+  const text = `${name} ${industry}`.toLowerCase();
+  let score = 76;
+  if (/norstella/.test(text)) score = 96;
+  else if (/customers|capital blue|members 1st|bank|credit|financial/.test(text)) score = 92;
+  else if (/wawa|retail/.test(text)) score = 90;
+  else if (/independence|hospital|health|insurance/.test(text)) score = 88;
+  else if (/seegrid|excelitas|minitab|robotics|software|technology/.test(text)) score = 86;
+  else if (/foster|industrial|manufacturing/.test(text)) score = 82;
+  return Math.max(68, Math.min(98, score - Math.min(index % 3, 2)));
+}
+
+function cleanCompanyName(value) {
+  return String(value).replace(/\s*\([^)]*\)\s*$/, "").trim();
+}
+
+function locationFromRecord(name, address) {
+  const partyLocation = String(name).match(/\(([^)]+)\)/);
+  if (partyLocation) return titleCase(partyLocation[1].replace(", US", ""));
+  const parts = String(address).split(",").map((part) => part.trim()).filter(Boolean);
+  if (parts.length >= 2) return titleCase(parts[parts.length - 2]);
+  return "";
+}
+
+function inferIndustry(value) {
+  const text = String(value).toLowerCase();
+  if (/norstella/.test(text)) return "Life Sciences / Data & AI";
+  if (/capital blue|insurance/.test(text)) return "Health / Insurance";
+  if (/customers|bancorp|members 1st|bank|credit union/.test(text)) return "Financial Services";
+  if (/clarion|butler|independence|hospital|health/.test(text)) return "Health";
+  if (/wawa|food markets/.test(text)) return "Retail";
+  if (/seegrid|robotics/.test(text)) return "Industrial Manufacturing / Robotics";
+  if (/excelitas/.test(text)) return "High Technology / Industrial Manufacturing";
+  if (/minitab/.test(text)) return "High Technology / Software";
+  if (/foster/.test(text)) return "Industrial Manufacturing";
+  return "General Business";
+}
+
+function inferOciWedge(industry, value) {
+  const text = `${industry} ${value}`.toLowerCase();
+  if (/life sciences|data & ai|norstella/.test(text)) return "OCI Data Science, GPU/AI, Autonomous Database, secure analytics platform";
+  if (/financial|bank|credit|bancorp/.test(text)) return "secure AI/data platform, regulated workloads, DR, database modernization";
+  if (/health \/ insurance|capital blue/.test(text)) return "secure payer data platform, analytics, DR, compliance landing zone";
+  if (/health|hospital|independence/.test(text)) return "healthcare DR, ransomware resilience, VMware, secure landing zone";
+  if (/retail|wawa/.test(text)) return "retail analytics, app modernization, DR, data platform";
+  if (/robotics|seegrid/.test(text)) return "AI/robotics data platform, GPU/vision workloads, telemetry analytics";
+  if (/software|minitab/.test(text)) return "SaaS infrastructure, database, analytics workloads, cloud cost optimization";
+  if (/technology|excelitas/.test(text)) return "HPC/engineering workloads, AI/vision, data platform, secure manufacturing workloads";
+  if (/industrial|manufacturing|foster/.test(text)) return "industrial data platform, IoT/monitoring analytics, VMware, DR";
+  return "cloud modernization, secure data platform, database modernization, DR";
 }
 
 function personaIdFromText(value) {
@@ -489,6 +583,10 @@ function outcomesFromWedge(wedge) {
 
 function slugify(value) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || `account-${Date.now()}`;
+}
+
+function titleCase(value) {
+  return String(value).toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
 }
 
 async function copyText(text, message) {
