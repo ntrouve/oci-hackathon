@@ -178,6 +178,13 @@ textarea {
   justify-content: flex-end;
 }
 
+.header-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .button,
 .icon-button {
   min-height: 38px;
@@ -571,6 +578,31 @@ textarea {
   gap: 12px;
 }
 
+.research-status {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink-soft);
+  background: var(--panel-soft);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.research-status.running {
+  color: var(--blue);
+  background: var(--blue-soft);
+  border-color: #bfd7ee;
+}
+
+.research-status.error {
+  color: var(--red-dark);
+  background: var(--red-soft);
+  border-color: #e5b2aa;
+}
+
 .research-block {
   display: grid;
   gap: 10px;
@@ -650,6 +682,77 @@ textarea {
   background: var(--blue-soft);
   font-size: 11px;
   font-weight: 700;
+}
+
+.research-results {
+  display: grid;
+  gap: 10px;
+}
+
+.result-group {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-soft);
+  overflow: hidden;
+}
+
+.result-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.result-group-header strong {
+  font-size: 14px;
+}
+
+.result-items {
+  display: grid;
+}
+
+.result-item {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 5px;
+}
+
+.result-item:last-child {
+  border-bottom: 0;
+}
+
+.result-item a {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.result-item a:hover {
+  color: var(--red-dark);
+  text-decoration: underline;
+}
+
+.result-item p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.result-source {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.result-empty {
+  padding: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .status-chip {

@@ -131,6 +131,7 @@ let selectedAccountId = topAccount(accounts).id;
 let selectedPersonaId = recommendedPersona(selectedAccount()).id;
 let activeFilter = "all";
 let toastTimer = null;
+const researchRuns = new Map();
 
 const els = {
   accountRows: document.getElementById("account-rows"),
@@ -143,6 +144,9 @@ const els = {
   executiveList: document.getElementById("executive-list"),
   sourceList: document.getElementById("source-list"),
   researchBrief: document.getElementById("research-brief"),
+  researchStatus: document.getElementById("research-status"),
+  researchResults: document.getElementById("research-results"),
+  runResearch: document.getElementById("run-research"),
   narrative: document.getElementById("oci-narrative"),
   outcomeList: document.getElementById("outcome-list"),
   emailSubject: document.getElementById("email-subject"),
@@ -206,6 +210,10 @@ document.getElementById("copy-full").addEventListener("click", () => {
 
 document.getElementById("copy-research").addEventListener("click", () => {
   copyText(els.researchBrief.value, "Research brief copied");
+});
+
+els.runResearch.addEventListener("click", () => {
+  runLiveResearch();
 });
 
 function render() {
@@ -315,6 +323,7 @@ function renderPersonas(account) {
 function renderResearch(account, persona) {
   const targetList = executiveTargets(account, persona);
   const sourceList = researchSources(account, persona, targetList);
+  const cachedRun = researchRuns.get(researchKey(account, persona));
   els.executiveList.innerHTML = targetList.map((target) => `
     <article class="executive-card">
       <strong>${escapeHtml(target.persona)}</strong>
@@ -333,7 +342,79 @@ function renderResearch(account, persona) {
     </a>
   `).join("");
 
-  els.researchBrief.value = researchBrief(account, persona, targetList, sourceList);
+  renderResearchResults(cachedRun);
+  els.researchBrief.value = researchBrief(account, persona, targetList, sourceList, cachedRun);
+  els.researchStatus.className = "research-status";
+  els.researchStatus.textContent = cachedRun
+    ? cachedRun.summary.headline
+    : "Ready to execute searches for the selected account.";
+}
+
+async function runLiveResearch() {
+  const account = selectedAccount();
+  const persona = selectedPersona();
+  const targetList = executiveTargets(account, persona);
+  const sourceList = researchSources(account, persona, targetList);
+  const key = researchKey(account, persona);
+  els.runResearch.disabled = true;
+  els.researchStatus.className = "research-status running";
+  els.researchStatus.textContent = `Executing ${sourceList.length} searches for ${account.groupName}...`;
+  els.researchResults.innerHTML = `<div class="result-empty">Searching public web, news, YouTube, and video sources from the OCI-hosted backend.</div>`;
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 45000);
+    const response = await fetch("/api/research", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        account: researchAccountPayload(account),
+        persona,
+        targets: targetList,
+        challenges: businessChallenges(account),
+        sources: sourceList
+      }),
+      signal: controller.signal
+    });
+    clearTimeout(timer);
+    if (!response.ok) throw new Error(`Research API returned ${response.status}`);
+    const data = await response.json();
+    researchRuns.set(key, data);
+    renderResearch(account, persona);
+    showToast("Research complete");
+  } catch (error) {
+    els.researchStatus.className = "research-status error";
+    els.researchStatus.textContent = `Research failed: ${error.message}. Fallback search links are still available.`;
+    els.researchResults.innerHTML = `<div class="result-empty">No live results returned. Use the fallback search links while the backend is unavailable.</div>`;
+  } finally {
+    els.runResearch.disabled = false;
+  }
+}
+
+function renderResearchResults(run) {
+  if (!run) {
+    els.researchResults.innerHTML = `<div class="result-empty">No executed results yet. Select Run Live Research to fetch web, news, YouTube, and video evidence into the app.</div>`;
+    return;
+  }
+  els.researchResults.innerHTML = run.groups.map((group) => {
+    const items = group.results && group.results.length
+      ? group.results.map((result) => `
+        <article class="result-item">
+          <a href="${escapeHtml(result.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(result.title)}</a>
+          <p>${escapeHtml(result.snippet || "No snippet returned.")}</p>
+          <span class="result-source">${escapeHtml(result.source || group.kind)}</span>
+        </article>
+      `).join("")
+      : `<div class="result-empty">No parsed results returned for this query.${group.error ? ` ${escapeHtml(group.error)}` : ""}</div>`;
+    return `
+      <section class="result-group">
+        <div class="result-group-header">
+          <strong>${escapeHtml(group.title)}</strong>
+          <span class="source-kind">${escapeHtml(group.kind)}</span>
+        </div>
+        <div class="result-items">${items}</div>
+      </section>
+    `;
+  }).join("");
 }
 
 function renderNarrative(account, persona) {
@@ -402,46 +483,54 @@ function executiveTargets(account, persona) {
 function researchSources(account, persona, targetList) {
   const company = companySearchName(account);
   const challenges = businessChallenges(account);
-  const primaryTitles = targetList[0].titles.slice(0, 3).join(" OR ");
+  const primaryTitles = targetList[0].titles.slice(0, 3).join(" ");
+  const fallbackQuery = `"${company}"`;
   const queries = [
     {
       kind: "Web",
       title: "Executive finder",
-      query: `"${company}" (${primaryTitles}) leadership executive`
+      query: `"${company}" ${primaryTitles} leadership executive`,
+      fallbackQuery
     },
     {
       kind: "News",
       title: "Current initiatives",
-      query: `"${company}" ${challenges.slice(0, 3).join(" ")} news strategy`
+      query: `"${company}" ${challenges.slice(0, 2).join(" ")} strategy`,
+      fallbackQuery
     },
     {
       kind: "YouTube",
-      title: "Executive interviews",
-      query: `"${company}" executive interview cloud AI data`
+      title: "Official and executive videos",
+      query: company,
+      fallbackQuery: company
     },
     {
       kind: "Videos",
       title: "Conference and demo videos",
-      query: `"${company}" ${account.industry} transformation interview presentation`
+      query: `${company} transformation interview presentation`,
+      fallbackQuery: company
     },
     {
       kind: "Web",
       title: "Business model and challenges",
-      query: `"${company}" business model challenges ${account.industry}`
+      query: `"${company}" business model challenges ${account.industry}`,
+      fallbackQuery
     },
     {
       kind: "Web",
       title: "Technology hiring signals",
-      query: `"${company}" careers cloud data AI security technology`
+      query: `"${company}" careers cloud data AI security technology`,
+      fallbackQuery
     }
   ];
   return queries.map((source) => ({
     ...source,
+    mustInclude: company,
     url: searchUrl(source.kind, source.query)
   }));
 }
 
-function researchBrief(account, persona, targetList, sourceList) {
+function researchBrief(account, persona, targetList, sourceList, executedRun) {
   const challenges = businessChallenges(account);
   const targetLines = targetList
     .map((target) => `- ${target.persona}: ${target.titles.join(", ")}. Goal: ${target.objective}`)
@@ -449,6 +538,12 @@ function researchBrief(account, persona, targetList, sourceList) {
   const sourceLines = sourceList
     .map((source) => `- ${source.kind}: ${source.query}`)
     .join("\n");
+  const executedLines = executedRun
+    ? executedRun.groups.flatMap((group) => (group.results || []).slice(0, 2).map((result) => `- ${group.kind}: ${result.title} ${result.url}`)).join("\n")
+    : "- Not executed yet. Select Run Live Research in the app.";
+  const evidenceLines = executedRun && executedRun.summary && executedRun.summary.evidenceHighlights
+    ? executedRun.summary.evidenceHighlights.map((item) => `- ${item}`).join("\n")
+    : "- Run live research to populate public evidence highlights.";
   return [
     `Account: ${account.name}`,
     `GU / parent context: ${account.groupName}`,
@@ -470,7 +565,13 @@ function researchBrief(account, persona, targetList, sourceList) {
     targetLines,
     "",
     "Search queries:",
-    sourceLines
+    sourceLines,
+    "",
+    "Executed evidence highlights:",
+    evidenceLines,
+    "",
+    "Executed result links:",
+    executedLines
   ].join("\n");
 }
 
@@ -484,6 +585,22 @@ function searchUrl(kind, query) {
 
 function companySearchName(account) {
   return cleanCompanyName(account.groupName || account.name).replace(/,?\s+Inc\.?$/i, "");
+}
+
+function researchKey(account, persona) {
+  return `${account.id}:${persona.id}`;
+}
+
+function researchAccountPayload(account) {
+  return {
+    name: account.name,
+    groupName: account.groupName,
+    industry: account.industry,
+    territory: account.territory,
+    location: account.location,
+    accountFit: account.accountFit,
+    ociWedge: account.ociWedge
+  };
 }
 
 function businessChallenges(account) {

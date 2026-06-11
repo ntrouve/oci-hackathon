@@ -1,0 +1,22 @@
+[Unit]
+Description=Territory Signal Copilot Research API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/home/opc/territory-signal-api
+PermissionsStartOnly=true
+ExecStart=/usr/bin/python3 /home/opc/territory-signal-api/research_server.py
+ExecStartPost=/usr/bin/sh /usr/local/sbin/label-territory-research-socket
+Restart=always
+RestartSec=5
+User=opc
+Group=nginx
+RuntimeDirectory=territory-research-api
+RuntimeDirectoryMode=0770
+UMask=0007
+Environment=PYTHONUNBUFFERED=1
+Environment=RESEARCH_SOCKET=/run/territory-research-api/research.sock
+
+[Install]
+WantedBy=multi-user.target

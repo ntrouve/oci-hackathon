@@ -138,10 +138,15 @@
                   <p class="eyebrow">Research Console</p>
                   <h3>Executives, personas, web, and video</h3>
                 </div>
-                <button class="button secondary small" id="copy-research" type="button">Copy Research Brief</button>
+                <div class="header-actions">
+                  <button class="button primary small" id="run-research" type="button">Run Live Research</button>
+                  <button class="button secondary small" id="copy-research" type="button">Copy Research Brief</button>
+                </div>
               </div>
 
               <div class="research-body">
+                <div class="research-status" id="research-status">Ready to execute searches for the selected account.</div>
+
                 <div class="research-block">
                   <div class="research-block-heading">
                     <strong>Executive targets</strong>
@@ -152,10 +157,18 @@
 
                 <div class="research-block">
                   <div class="research-block-heading">
-                    <strong>Search launchpad</strong>
-                    <span>Open live web, news, and video searches</span>
+                    <strong>Search plan</strong>
+                    <span>Server executes these searches; links remain as fallback</span>
                   </div>
                   <div id="source-list" class="source-list"></div>
+                </div>
+
+                <div class="research-block">
+                  <div class="research-block-heading">
+                    <strong>Executed results</strong>
+                    <span>Returned from the OCI-hosted research API</span>
+                  </div>
+                  <div id="research-results" class="research-results"></div>
                 </div>
 
                 <div class="research-block">
@@ -207,6 +220,6 @@
 
     <div id="toast" class="toast" role="status" aria-live="polite">Copied</div>
 
-    <script src="main.js"></script>
+    <script src="main.js?v=20260611-live-research-2"></script>
   </body>
 </html>

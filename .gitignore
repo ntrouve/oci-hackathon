@@ -4,3 +4,5 @@
 OCI_VM_MANIFEST.md
 .DS_Store
 .github-ssh/
+__pycache__/
+*.pyc

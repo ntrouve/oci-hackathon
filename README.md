@@ -12,7 +12,7 @@ https://129-146-81-29.sslip.io/
 2. Review account records ranked by buying-signal strength.
 3. Open an account to inspect territory and enrichment signals.
 4. Select a buying-committee persona.
-5. Review executive/persona targets and launch web, news, YouTube, and video searches.
+5. Run live research to execute web, news, YouTube, and video searches from the OCI-hosted backend.
 6. Review the OCI narrative and copy the email draft.
 
 ## Research Console
@@ -20,10 +20,10 @@ https://129-146-81-29.sslip.io/
 For each selected account, the app generates:
 
 - Executive and buying-committee persona targets to validate in public sources.
-- Web, news, YouTube, and video search links for the account, executives, business model, and likely challenges.
-- A copyable research brief that can be pasted into a live research agent or backend workflow.
+- Executed web, news, YouTube, and video result groups for the account, executives, business model, and likely challenges.
+- A copyable research brief that includes the executed evidence highlights and result links.
 
-This static VM-hosted version opens live public-search queries from the UI. Automatic result ingestion and summarization can be added behind the same interface with a search API and video API key.
+The frontend calls `/api/research`, which is proxied by Nginx to a small Python backend on the OCI VM. The backend uses public Google News RSS and YouTube result pages without requiring demo API keys. Production-grade result quality can be added behind the same interface with a commercial search API and video API key.
 
 ## CSV Format
 
@@ -63,5 +63,7 @@ http://127.0.0.1:4173/
 
 - `app/index.html`: static UI shell
 - `app/styles.css`: Oracle Redwood-inspired styling
-- `app/main.js`: sample data, CSV parsing, account selection, persona logic, research launchpad, and copy actions
+- `app/main.js`: sample data, CSV parsing, account selection, persona logic, executed research, and copy actions
+- `api/research_server.py`: OCI-hosted research API for executed web/news/video result retrieval
+- `deploy/`: Nginx and systemd files for the OCI-hosted research API
 - `sample-accounts.csv`: example upload file
