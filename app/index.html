@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Territory Signal Copilot</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar" aria-label="Application navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">O</div>
+          <div>
+            <p class="eyebrow">OCI Sales</p>
+            <h1>Territory Signal Copilot</h1>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Workspace">
+          <a class="nav-item active" href="#territory">Territory</a>
+          <a class="nav-item" href="#signals">Signals</a>
+          <a class="nav-item" href="#narrative">OCI Narrative</a>
+          <a class="nav-item" href="#drafts">Email Drafts</a>
+        </nav>
+
+        <section class="sidebar-panel">
+          <p class="panel-label">Demo Target</p>
+          <strong id="active-account-compact">Acme Retail Group</strong>
+          <span id="active-persona-compact">CIO</span>
+        </section>
+
+        <section class="sidebar-panel">
+          <p class="panel-label">Hosting</p>
+          <strong>OCI Compute</strong>
+          <span>Public VM on port 80</span>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Public Signal Workspace</p>
+            <h2>Prioritize accounts and generate evidence-backed OCI outreach.</h2>
+          </div>
+          <div class="top-actions">
+            <button class="button secondary" id="load-sample" type="button">Load Sample</button>
+            <label class="button primary file-button" for="csv-upload">
+              Upload CSV
+              <input id="csv-upload" type="file" accept=".csv,text/csv">
+            </label>
+          </div>
+        </header>
+
+        <section class="metric-strip" aria-label="Territory metrics">
+          <article class="metric">
+            <span>Accounts</span>
+            <strong id="metric-accounts">5</strong>
+            <small>Current territory list</small>
+          </article>
+          <article class="metric">
+            <span>High Intent</span>
+            <strong id="metric-intent">3</strong>
+            <small>Scores above 80</small>
+          </article>
+          <article class="metric">
+            <span>Drafts Ready</span>
+            <strong id="metric-drafts">20</strong>
+            <small>Persona-specific emails</small>
+          </article>
+          <article class="metric">
+            <span>Median Score</span>
+            <strong id="metric-score">82</strong>
+            <small>Buying-signal strength</small>
+          </article>
+        </section>
+
+        <section class="split-layout">
+          <section class="left-pane" id="territory">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Territory Queue</p>
+                <h3>Ranked account signals</h3>
+              </div>
+              <div class="filter-group" role="group" aria-label="Account filter">
+                <button class="filter-chip active" data-filter="all" type="button">All</button>
+                <button class="filter-chip" data-filter="high" type="button">High</button>
+                <button class="filter-chip" data-filter="ai" type="button">AI</button>
+                <button class="filter-chip" data-filter="cost" type="button">Cost</button>
+              </div>
+            </div>
+
+            <div class="account-table-wrap">
+              <table class="account-table">
+                <thead>
+                  <tr>
+                    <th>Account</th>
+                    <th>Score</th>
+                    <th>Primary Signal</th>
+                    <th>Persona</th>
+                  </tr>
+                </thead>
+                <tbody id="account-rows"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="right-pane" aria-live="polite">
+            <section class="account-brief" id="signals">
+              <div class="brief-header">
+                <div>
+                  <p class="eyebrow" id="account-industry">Retail</p>
+                  <h3 id="account-name">Acme Retail Group</h3>
+                </div>
+                <div class="score-ring" aria-label="Intent score">
+                  <span id="account-score">92</span>
+                  <small>intent</small>
+                </div>
+              </div>
+              <p id="account-summary" class="summary-copy"></p>
+              <div id="signal-list" class="signal-list"></div>
+            </section>
+
+            <section class="persona-section">
+              <div class="section-heading compact">
+                <div>
+                  <p class="eyebrow">Buying Committee</p>
+                  <h3>Choose outreach persona</h3>
+                </div>
+              </div>
+              <div id="persona-list" class="persona-list"></div>
+            </section>
+
+            <section class="narrative-panel" id="narrative">
+              <div class="section-heading compact">
+                <div>
+                  <p class="eyebrow">OCI Narrative</p>
+                  <h3>Why OCI, why now</h3>
+                </div>
+                <span class="status-chip">Human review</span>
+              </div>
+              <p id="oci-narrative"></p>
+              <dl class="outcome-list" id="outcome-list"></dl>
+            </section>
+
+            <section class="draft-panel" id="drafts">
+              <div class="section-heading compact">
+                <div>
+                  <p class="eyebrow">Reviewed Outreach</p>
+                  <h3>Email draft</h3>
+                </div>
+                <button class="button secondary small" id="copy-full" type="button">Copy Full Email</button>
+              </div>
+
+              <div class="draft-card">
+                <label for="email-subject">Subject</label>
+                <div class="copy-row">
+                  <input id="email-subject" type="text" readonly>
+                  <button class="icon-button" id="copy-subject" type="button" aria-label="Copy subject">Copy</button>
+                </div>
+                <label for="email-body">Body</label>
+                <textarea id="email-body" readonly rows="12"></textarea>
+                <div class="source-note" id="email-sources"></div>
+              </div>
+            </section>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">Copied</div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

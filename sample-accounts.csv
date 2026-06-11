@@ -1,0 +1,6 @@
+account,website,industry,segment,territory_notes,target_persona
+Acme Retail Group,https://acme.example,Retail,Enterprise,"AI commerce and margin pressure",CIO
+HelioBank,https://helio.example,Financial Services,Strategic,"Fraud analytics and platform modernization",CISO
+Northstar Health,https://northstar.example,Healthcare,Growth,"Clinical AI and privacy modernization",CISO
+Summit Manufacturing,https://summit.example,Industrial Manufacturing,Enterprise,"ERP modernization and downtime reduction",VP Infrastructure
+Pinnacle Utilities,https://pinnacle.example,Energy & Utilities,Named Account,"Grid resilience and cyber risk",CISO
