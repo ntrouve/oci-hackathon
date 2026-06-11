@@ -276,6 +276,7 @@ textarea {
 .left-pane,
 .account-brief,
 .persona-section,
+.research-panel,
 .narrative-panel,
 .draft-panel {
   background: var(--panel);
@@ -523,6 +524,7 @@ textarea {
 }
 
 .persona-section,
+.research-panel,
 .narrative-panel,
 .draft-panel {
   overflow: hidden;
@@ -561,6 +563,93 @@ textarea {
 .persona-card:hover {
   border-color: #e5b2aa;
   background: var(--red-soft);
+}
+
+.research-body {
+  padding: 12px;
+  display: grid;
+  gap: 12px;
+}
+
+.research-block {
+  display: grid;
+  gap: 10px;
+}
+
+.research-block-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.research-block-heading strong {
+  font-size: 14px;
+}
+
+.research-block-heading span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.executive-list,
+.source-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.executive-card,
+.source-card {
+  min-height: 116px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-soft);
+  display: grid;
+  gap: 7px;
+}
+
+.executive-card strong,
+.source-card strong {
+  font-size: 14px;
+}
+
+.executive-card span,
+.source-card span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.source-card {
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.source-card:hover {
+  border-color: #e5b2aa;
+  background: var(--red-soft);
+}
+
+.source-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.source-kind {
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0 8px;
+  color: var(--blue);
+  background: var(--blue-soft);
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .status-chip {
@@ -681,7 +770,7 @@ textarea {
   }
 
   .nav-list {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .sidebar-panel {
@@ -716,6 +805,8 @@ textarea {
 
   .metric-strip,
   .persona-list,
+  .executive-list,
+  .source-list,
   .outcome-list {
     grid-template-columns: 1fr;
   }

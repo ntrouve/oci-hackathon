@@ -20,6 +20,7 @@
         <nav class="nav-list" aria-label="Workspace">
           <a class="nav-item active" href="#territory">Territory</a>
           <a class="nav-item" href="#signals">Signals</a>
+          <a class="nav-item" href="#research">Research</a>
           <a class="nav-item" href="#narrative">OCI Narrative</a>
           <a class="nav-item" href="#drafts">Email Drafts</a>
         </nav>
@@ -129,6 +130,42 @@
                 </div>
               </div>
               <div id="persona-list" class="persona-list"></div>
+            </section>
+
+            <section class="research-panel" id="research">
+              <div class="section-heading compact">
+                <div>
+                  <p class="eyebrow">Research Console</p>
+                  <h3>Executives, personas, web, and video</h3>
+                </div>
+                <button class="button secondary small" id="copy-research" type="button">Copy Research Brief</button>
+              </div>
+
+              <div class="research-body">
+                <div class="research-block">
+                  <div class="research-block-heading">
+                    <strong>Executive targets</strong>
+                    <span>Personas to validate in public sources</span>
+                  </div>
+                  <div id="executive-list" class="executive-list"></div>
+                </div>
+
+                <div class="research-block">
+                  <div class="research-block-heading">
+                    <strong>Search launchpad</strong>
+                    <span>Open live web, news, and video searches</span>
+                  </div>
+                  <div id="source-list" class="source-list"></div>
+                </div>
+
+                <div class="research-block">
+                  <div class="research-block-heading">
+                    <strong>Research brief</strong>
+                    <span>Copy into a live research agent or call-planning workflow</span>
+                  </div>
+                  <textarea id="research-brief" readonly rows="8"></textarea>
+                </div>
+              </div>
             </section>
 
             <section class="narrative-panel" id="narrative">

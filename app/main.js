@@ -140,6 +140,9 @@ const els = {
   accountSummary: document.getElementById("account-summary"),
   signalList: document.getElementById("signal-list"),
   personaList: document.getElementById("persona-list"),
+  executiveList: document.getElementById("executive-list"),
+  sourceList: document.getElementById("source-list"),
+  researchBrief: document.getElementById("research-brief"),
   narrative: document.getElementById("oci-narrative"),
   outcomeList: document.getElementById("outcome-list"),
   emailSubject: document.getElementById("email-subject"),
@@ -199,6 +202,10 @@ document.getElementById("copy-subject").addEventListener("click", () => {
 
 document.getElementById("copy-full").addEventListener("click", () => {
   copyText(`${els.emailSubject.value}\n\n${els.emailBody.value}`, "Full email copied");
+});
+
+document.getElementById("copy-research").addEventListener("click", () => {
+  copyText(els.researchBrief.value, "Research brief copied");
 });
 
 function render() {
@@ -279,6 +286,7 @@ function renderDetail() {
   `).join("");
 
   renderPersonas(account);
+  renderResearch(account, persona);
   renderNarrative(account, persona);
   renderEmail(account, persona);
 }
@@ -302,6 +310,30 @@ function renderPersonas(account) {
       renderDetail();
     });
   });
+}
+
+function renderResearch(account, persona) {
+  const targetList = executiveTargets(account, persona);
+  const sourceList = researchSources(account, persona, targetList);
+  els.executiveList.innerHTML = targetList.map((target) => `
+    <article class="executive-card">
+      <strong>${escapeHtml(target.persona)}</strong>
+      <span>${escapeHtml(target.titles.join(", "))}</span>
+      <span>${escapeHtml(target.objective)}</span>
+    </article>
+  `).join("");
+
+  els.sourceList.innerHTML = sourceList.map((source) => `
+    <a class="source-card" href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">
+      <div class="source-meta">
+        <strong>${escapeHtml(source.title)}</strong>
+        <span class="source-kind">${escapeHtml(source.kind)}</span>
+      </div>
+      <span>${escapeHtml(source.query)}</span>
+    </a>
+  `).join("");
+
+  els.researchBrief.value = researchBrief(account, persona, targetList, sourceList);
 }
 
 function renderNarrative(account, persona) {
@@ -334,6 +366,153 @@ function renderEmail(account, persona) {
   els.emailSubject.value = subject;
   els.emailBody.value = body;
   els.emailSources.textContent = `Signals used: ${account.signals.map((signal) => `${signal.title} (${signal.source})`).join("; ")}. Draft requires rep review before sending.`;
+}
+
+function executiveTargets(account, persona) {
+  const baseTargets = [
+    {
+      persona: "CIO / CTO",
+      titles: ["Chief Information Officer", "Chief Technology Officer", "VP IT"],
+      objective: "Validate cloud strategy, modernization programs, infrastructure priorities, and application estate signals."
+    },
+    {
+      persona: "CISO / Security",
+      titles: ["Chief Information Security Officer", "VP Security", "Head of Cybersecurity"],
+      objective: "Look for security, compliance, resilience, ransomware, and regulated-workload priorities."
+    },
+    {
+      persona: "Data & AI Leader",
+      titles: ["Chief Data Officer", "VP Analytics", "Head of AI", "Data Science Leader"],
+      objective: "Find AI, analytics, data platform, model operations, and governed data initiatives."
+    },
+    {
+      persona: "Operations / Business Leader",
+      titles: ["COO", "VP Operations", "Digital Transformation Leader"],
+      objective: "Map business outcomes, operational pressure, customer experience, and process modernization needs."
+    }
+  ];
+  const selected = persona.label.toLowerCase();
+  return baseTargets.sort((a, b) => {
+    const aMatch = a.persona.toLowerCase().includes(selected.split(" ")[0]) ? 1 : 0;
+    const bMatch = b.persona.toLowerCase().includes(selected.split(" ")[0]) ? 1 : 0;
+    return bMatch - aMatch;
+  });
+}
+
+function researchSources(account, persona, targetList) {
+  const company = companySearchName(account);
+  const challenges = businessChallenges(account);
+  const primaryTitles = targetList[0].titles.slice(0, 3).join(" OR ");
+  const queries = [
+    {
+      kind: "Web",
+      title: "Executive finder",
+      query: `"${company}" (${primaryTitles}) leadership executive`
+    },
+    {
+      kind: "News",
+      title: "Current initiatives",
+      query: `"${company}" ${challenges.slice(0, 3).join(" ")} news strategy`
+    },
+    {
+      kind: "YouTube",
+      title: "Executive interviews",
+      query: `"${company}" executive interview cloud AI data`
+    },
+    {
+      kind: "Videos",
+      title: "Conference and demo videos",
+      query: `"${company}" ${account.industry} transformation interview presentation`
+    },
+    {
+      kind: "Web",
+      title: "Business model and challenges",
+      query: `"${company}" business model challenges ${account.industry}`
+    },
+    {
+      kind: "Web",
+      title: "Technology hiring signals",
+      query: `"${company}" careers cloud data AI security technology`
+    }
+  ];
+  return queries.map((source) => ({
+    ...source,
+    url: searchUrl(source.kind, source.query)
+  }));
+}
+
+function researchBrief(account, persona, targetList, sourceList) {
+  const challenges = businessChallenges(account);
+  const targetLines = targetList
+    .map((target) => `- ${target.persona}: ${target.titles.join(", ")}. Goal: ${target.objective}`)
+    .join("\n");
+  const sourceLines = sourceList
+    .map((source) => `- ${source.kind}: ${source.query}`)
+    .join("\n");
+  return [
+    `Account: ${account.name}`,
+    `GU / parent context: ${account.groupName}`,
+    `Territory: ${account.territory}`,
+    `Industry hypothesis: ${account.industry}`,
+    `Recommended persona: ${persona.label}`,
+    `OCI wedge: ${account.ociWedge}`,
+    "",
+    "Research goals:",
+    "- Identify named executives and buying-committee members tied to IT, security, data/AI, infrastructure, operations, and transformation.",
+    "- Summarize what the business does, the current business model, and the most likely pressures or challenges.",
+    "- Pull public evidence from web results, news, YouTube, conference talks, webinars, podcasts, customer videos, and job postings.",
+    "- Convert evidence into a concise sales narrative and outreach angle for OCI.",
+    "",
+    "Likely challenge themes to validate:",
+    challenges.map((challenge) => `- ${challenge}`).join("\n"),
+    "",
+    "Executive/persona targets:",
+    targetLines,
+    "",
+    "Search queries:",
+    sourceLines
+  ].join("\n");
+}
+
+function searchUrl(kind, query) {
+  const encoded = encodeURIComponent(query);
+  if (kind === "News") return `https://www.google.com/search?tbm=nws&q=${encoded}`;
+  if (kind === "YouTube") return `https://www.youtube.com/results?search_query=${encoded}`;
+  if (kind === "Videos") return `https://www.google.com/search?tbm=vid&q=${encoded}`;
+  return `https://www.google.com/search?q=${encoded}`;
+}
+
+function companySearchName(account) {
+  return cleanCompanyName(account.groupName || account.name).replace(/,?\s+Inc\.?$/i, "");
+}
+
+function businessChallenges(account) {
+  const text = `${account.name} ${account.groupName} ${account.industry} ${account.ociWedge}`.toLowerCase();
+  if (/life sciences|norstella/.test(text)) {
+    return ["AI-ready life sciences data", "secure analytics", "forecasting accuracy", "clinical and commercial data integration"];
+  }
+  if (/financial|bank|credit|bancorp/.test(text)) {
+    return ["regulated AI adoption", "fraud and risk analytics", "resilience and DR", "customer digital experience"];
+  }
+  if (/health|hospital|insurance/.test(text)) {
+    return ["ransomware resilience", "regulated patient or member data", "claims and clinical analytics", "secure modernization"];
+  }
+  if (/retail|wawa/.test(text)) {
+    return ["store operations", "loyalty and mobile ordering", "fuel and fleet data", "edge and resilience"];
+  }
+  if (/robotics|seegrid/.test(text)) {
+    return ["robot telemetry", "AI vision workloads", "manufacturing automation", "fleet analytics"];
+  }
+  if (/software|minitab/.test(text)) {
+    return ["SaaS scale", "analytics workloads", "cloud cost optimization", "database performance"];
+  }
+  if (/technology|excelitas/.test(text)) {
+    return ["engineering workloads", "secure manufacturing data", "AI vision", "high-performance compute"];
+  }
+  if (/industrial|manufacturing|foster/.test(text)) {
+    return ["field data", "asset monitoring", "industrial analytics", "resilient infrastructure"];
+  }
+  return ["cloud modernization", "secure data platform", "resilience", "operational analytics"];
 }
 
 function selectedAccount() {

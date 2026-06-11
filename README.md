@@ -12,7 +12,18 @@ https://129-146-81-29.sslip.io/
 2. Review account records ranked by buying-signal strength.
 3. Open an account to inspect territory and enrichment signals.
 4. Select a buying-committee persona.
-5. Review the OCI narrative and copy the email draft.
+5. Review executive/persona targets and launch web, news, YouTube, and video searches.
+6. Review the OCI narrative and copy the email draft.
+
+## Research Console
+
+For each selected account, the app generates:
+
+- Executive and buying-committee persona targets to validate in public sources.
+- Web, news, YouTube, and video search links for the account, executives, business model, and likely challenges.
+- A copyable research brief that can be pasted into a live research agent or backend workflow.
+
+This static VM-hosted version opens live public-search queries from the UI. Automatic result ingestion and summarization can be added behind the same interface with a search API and video API key.
 
 ## CSV Format
 
@@ -52,5 +63,5 @@ http://127.0.0.1:4173/
 
 - `app/index.html`: static UI shell
 - `app/styles.css`: Oracle Redwood-inspired styling
-- `app/main.js`: sample data, CSV parsing, account selection, persona logic, and copy actions
+- `app/main.js`: sample data, CSV parsing, account selection, persona logic, research launchpad, and copy actions
 - `sample-accounts.csv`: example upload file
