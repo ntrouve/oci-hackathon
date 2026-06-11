@@ -16,15 +16,26 @@ https://129-146-81-29.sslip.io/
 
 ## CSV Format
 
-The app currently accepts a simple CSV with an account/company/name column:
+The app is optimized for this account-prioritization CSV format:
 
 ```csv
-account,website,industry,segment,territory_notes,target_persona
-Acme Retail Group,https://acme.example,Retail,Enterprise,"AI commerce and margin pressure",CIO
-HelioBank,https://helio.example,Financial Services,Strategic,"Fraud analytics and platform modernization",CISO
+Rank,Account,Industry,Why this has $500K ARR potential,Best OCI wedge
+1,Norstella,Life Sciences / Data & AI,"Strongest data/AI fit in the whole list...","OCI Data Science, GPU/AI, Autonomous Database, data lakehouse, secure analytics platform"
+2,Customers Bank,Financial Services,"Large regulated financial institution with current AI transformation momentum...","Secure AI/data platform, regulated workloads, DR, database modernization"
 ```
 
-Only the account name is required today. Extra columns are safe to include and can be wired into future enrichment logic.
+Required:
+
+- `Account`
+
+Recommended:
+
+- `Rank`
+- `Industry`
+- `Why this has $500K ARR potential`
+- `Best OCI wedge`
+
+The parser remains backward-compatible with simple files that only include `account`, `account name`, `company`, `company name`, or `name`.
 
 ## Local Preview
 

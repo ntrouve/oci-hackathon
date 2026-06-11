@@ -25,187 +25,84 @@ const personas = [
   }
 ];
 
-const sampleAccounts = [
+const sampleRows = [
   {
-    id: "acme-retail",
-    name: "Acme Retail Group",
-    industry: "Retail",
-    score: 92,
-    owner: "Southwest enterprise territory",
-    tags: ["ai", "cost", "modernization"],
-    summary: "Acme is investing in digital shopping experiences while publicly discussing margin pressure and fulfillment speed. That combination creates a strong OCI conversation around AI services, data platforms, and cost-efficient cloud infrastructure.",
-    signals: [
-      {
-        type: "ai",
-        title: "AI shopping assistant pilot",
-        detail: "Public product blog describes a pilot for personalized product discovery and automated customer support.",
-        source: "Company blog, May 2026"
-      },
-      {
-        type: "cost",
-        title: "Margin pressure in earnings commentary",
-        detail: "Recent earnings remarks emphasized operating leverage, store technology efficiency, and lower digital fulfillment costs.",
-        source: "Public earnings transcript"
-      },
-      {
-        type: "modernization",
-        title: "Data platform hiring",
-        detail: "Open roles reference streaming analytics, real-time inventory, and cloud data engineering.",
-        source: "Public careers page"
-      }
-    ],
-    outcomes: [
-      ["AI at scale", "OCI AI infrastructure and data services can support recommendation and service-assist workloads."],
-      ["Cost control", "OCI compute and autonomous data options can support lower-cost modernization paths."],
-      ["Operational resilience", "Distributed services and observability can help keep digital commerce workflows available."],
-      ["Data readiness", "A governed data platform can connect inventory, customer, and fulfillment signals."]
-    ]
+    rank: "1",
+    account: "Norstella",
+    industry: "Life Sciences / Data & AI",
+    arrPotential: "Strongest data/AI fit in the whole list. Norstella positions itself around life-sciences data, real-world data, AI, forecasting, trial design, market access, and patient activation, which maps directly to high-value OCI data, AI, GPU, and database conversations.",
+    ociWedge: "OCI Data Science, GPU/AI, Autonomous Database, data lakehouse, secure analytics platform"
   },
   {
-    id: "heliobank",
-    name: "HelioBank",
+    rank: "2",
+    account: "Customers Bank",
     industry: "Financial Services",
-    score: 88,
-    owner: "Strategic financial services patch",
-    tags: ["security", "ai", "modernization"],
-    summary: "HelioBank is modernizing digital banking while discussing fraud prevention and regulatory scrutiny. OCI can be positioned around secure modernization, governed AI, and resilient transaction platforms.",
-    signals: [
-      {
-        type: "security",
-        title: "Fraud analytics initiative",
-        detail: "Executive interview highlighted AI-assisted fraud detection and stronger customer identity controls.",
-        source: "Industry interview"
-      },
-      {
-        type: "modernization",
-        title: "Core platform modernization",
-        detail: "Technology roadmap references API modernization and cloud-native digital banking services.",
-        source: "Investor technology update"
-      },
-      {
-        type: "ai",
-        title: "Data science hiring surge",
-        detail: "Public roles mention model governance, MLOps, and real-time risk scoring.",
-        source: "Public job postings"
-      }
-    ],
-    outcomes: [
-      ["Governed AI", "OCI can support model operations with controls that fit regulated financial workflows."],
-      ["Resilience", "Cloud architecture conversations can center on availability and transaction continuity."],
-      ["Security posture", "OCI security services can reinforce identity, network, and data protection priorities."],
-      ["Modern integration", "API and data modernization can reduce friction across digital banking products."]
-    ]
+    arrPotential: "Large regulated financial institution with current AI transformation momentum. Customers Bank recently announced a multiyear OpenAI collaboration and described itself as having nearly $26B in assets, which suggests executive appetite for AI-enabled operating-model change.",
+    ociWedge: "Secure AI/data platform, regulated workloads, DR, database modernization"
   },
   {
-    id: "northstar-health",
-    name: "Northstar Health",
-    industry: "Healthcare",
-    score: 84,
-    owner: "Healthcare growth accounts",
-    tags: ["ai", "security"],
-    summary: "Northstar Health is exploring clinical AI and patient engagement while operating in a high-trust compliance environment. OCI can help frame an outcome around secure AI infrastructure and data governance.",
-    signals: [
-      {
-        type: "ai",
-        title: "Clinical AI partnership",
-        detail: "Public announcement describes AI pilots for care team productivity and patient message triage.",
-        source: "Press release"
-      },
-      {
-        type: "security",
-        title: "Data privacy modernization",
-        detail: "Leadership comments emphasize patient data protection and auditability.",
-        source: "Public leadership Q&A"
-      },
-      {
-        type: "modernization",
-        title: "EHR analytics expansion",
-        detail: "Hiring signals point to cloud analytics and interoperability engineering.",
-        source: "Public careers page"
-      }
-    ],
-    outcomes: [
-      ["Secure AI", "OCI can support AI workloads with a security and governance-first architecture."],
-      ["Clinical productivity", "AI services and data platforms can support workflows that reduce manual review burden."],
-      ["Compliance", "A clear control model helps keep sensitive data use auditable."],
-      ["Interoperability", "Modern integration services can help connect patient, clinical, and operational data."]
-    ]
+    rank: "3",
+    account: "Wawa Food Markets",
+    industry: "Retail",
+    arrPotential: "Large multi-location convenience, fuel, food, mobile ordering, loyalty, and store-operations profile. Wawa's site emphasizes store locations, ordering, delivery, fleet cards, fuel, and EV charging, all of which point to high-volume operational data and customer-facing digital systems.",
+    ociWedge: "Retail analytics, app modernization, DR, data platform, edge/store systems"
   },
   {
-    id: "summit-manufacturing",
-    name: "Summit Manufacturing",
+    rank: "4",
+    account: "Independence Health System",
+    industry: "Health",
+    arrPotential: "Strong regulated healthcare opportunity with enough scale for a meaningful OCI deal. Independence Health says it includes five hospitals, 925 beds, more than 1,000 providers, and 7,300 employees.",
+    ociWedge: "Healthcare DR, ransomware resilience, VMware, secure landing zone, database workloads"
+  },
+  {
+    rank: "5",
+    account: "Excelitas Technologies",
+    industry: "High Technology / Industrial Manufacturing",
+    arrPotential: "Advanced photonics, sensing, imaging, optics, semiconductor, aerospace/defense, life sciences, and industrial automation profile. Excelitas explicitly serves life sciences, advanced industrial, next-gen semiconductor, aerospace/defense, AI, IoT, and precision medicine markets.",
+    ociWedge: "HPC/engineering workloads, AI/vision, data platform, secure manufacturing workloads"
+  },
+  {
+    rank: "6",
+    account: "Capital Blue Cross",
+    industry: "Health / Insurance",
+    arrPotential: "Health insurance payer profile means regulated member data, claims, analytics, compliance, security, and digital engagement workloads. This is a good fit for a higher-ARR data/security/DR play, though sales cycles may be slower than pure tech accounts.",
+    ociWedge: "Secure data platform, analytics, DR, compliance landing zone, database modernization"
+  },
+  {
+    rank: "7",
+    account: "Minitab",
+    industry: "High Technology / Software",
+    arrPotential: "Software and analytics company with cloud product motion. Minitab markets statistical software, predictive analytics, and cloud-enabled data analysis, which makes OCI cost/performance, database, and application hosting relevant.",
+    ociWedge: "SaaS infrastructure, database, analytics workloads, cloud cost optimization"
+  },
+  {
+    rank: "8",
+    account: "Seegrid Corporation",
+    industry: "Industrial Manufacturing / Robotics",
+    arrPotential: "Robotics and autonomous mobile robot company with data, automation, fleet, AI/vision, and industrial operations fit. Seegrid positions itself around autonomous material handling, manufacturing, warehousing, and scalable AMR deployments.",
+    ociWedge: "AI/robotics data platform, GPU/vision workloads, app hosting, telemetry analytics"
+  },
+  {
+    rank: "9",
+    account: "Members 1st Federal Credit Union",
+    industry: "Financial Services",
+    arrPotential: "Credit union with broad branch footprint in Pennsylvania and regulated member-data needs. Its branch/ATM locator shows many locations across PA, which points to digital banking, security, DR, and distributed operations needs.",
+    ociWedge: "DR, secure banking workloads, data analytics, database modernization"
+  },
+  {
+    rank: "10",
+    account: "L.B. Foster Company",
     industry: "Industrial Manufacturing",
-    score: 76,
-    owner: "Manufacturing territory",
-    tags: ["cost", "modernization"],
-    summary: "Summit is focused on plant productivity, supply chain visibility, and ERP modernization. OCI can connect operational data, analytics, and infrastructure modernization to measurable uptime and cost outcomes.",
-    signals: [
-      {
-        type: "cost",
-        title: "Downtime reduction goal",
-        detail: "Public operations update calls out equipment uptime and production efficiency as board-level priorities.",
-        source: "Annual operations report"
-      },
-      {
-        type: "modernization",
-        title: "ERP modernization planning",
-        detail: "Open program roles reference integration, cloud migration, and manufacturing data hubs.",
-        source: "Public job postings"
-      },
-      {
-        type: "ai",
-        title: "Predictive maintenance interest",
-        detail: "Conference session summary mentions analytics pilots for predictive maintenance.",
-        source: "Conference agenda"
-      }
-    ],
-    outcomes: [
-      ["Uptime", "OCI data and analytics services can support predictive maintenance and plant visibility."],
-      ["ERP path", "OCI can support modernization with integration patterns that reduce migration risk."],
-      ["Cost efficiency", "Infrastructure consolidation and workload tuning can support lower operating costs."],
-      ["Supply chain insight", "Connected data can improve planning and exception management."]
-    ]
-  },
-  {
-    id: "pinnacle-utilities",
-    name: "Pinnacle Utilities",
-    industry: "Energy & Utilities",
-    score: 71,
-    owner: "Utilities named accounts",
-    tags: ["security", "cost"],
-    summary: "Pinnacle Utilities is publicly focused on grid resilience, cyber risk, and infrastructure efficiency. OCI can be positioned around secure data platforms, operational resilience, and modernization economics.",
-    signals: [
-      {
-        type: "security",
-        title: "Grid cyber resilience program",
-        detail: "Public plan emphasizes stronger cyber controls for operational technology and customer systems.",
-        source: "Regulatory filing"
-      },
-      {
-        type: "cost",
-        title: "Capital efficiency pressure",
-        detail: "Recent public filing notes cost discipline across infrastructure investments.",
-        source: "Public financial filing"
-      },
-      {
-        type: "modernization",
-        title: "Data center consolidation",
-        detail: "Technology roadmap mentions consolidating legacy platforms and improving disaster recovery.",
-        source: "Public roadmap summary"
-      }
-    ],
-    outcomes: [
-      ["Resilience", "OCI infrastructure can support disaster recovery and critical workload continuity."],
-      ["Security", "OCI security controls can help frame cyber risk reduction across cloud workloads."],
-      ["Cost discipline", "Modernized platforms can reduce legacy infrastructure drag."],
-      ["Data visibility", "A governed data foundation can support grid and customer operations insight."]
-    ]
+    arrPotential: "Infrastructure, rail, monitoring, and industrial technology profile with likely operational, engineering, and field-data workloads. L.B. Foster describes rail products, friction management, total track monitoring, technologies, and critical rail infrastructure/safety solutions.",
+    ociWedge: "Industrial data platform, IoT/monitoring analytics, VMware, DR, database workloads"
   }
 ];
 
+const sampleAccounts = sampleRows.map(createAccountFromRecord);
+
 let accounts = [...sampleAccounts];
 let selectedAccountId = accounts[0].id;
-let selectedPersonaId = personas[0].id;
+let selectedPersonaId = recommendedPersona(accounts[0]).id;
 let activeFilter = "all";
 let toastTimer = null;
 
@@ -234,7 +131,7 @@ const els = {
 document.getElementById("load-sample").addEventListener("click", () => {
   accounts = [...sampleAccounts];
   selectedAccountId = accounts[0].id;
-  selectedPersonaId = personas[0].id;
+  selectedPersonaId = recommendedPersona(accounts[0]).id;
   activeFilter = "all";
   document.querySelectorAll(".filter-chip").forEach((button) => {
     button.classList.toggle("active", button.dataset.filter === "all");
@@ -252,9 +149,9 @@ document.getElementById("csv-upload").addEventListener("change", async (event) =
     showToast("No account names found");
     return;
   }
-  accounts = parsed.map(createAccountFromName);
+  accounts = parsed.map(createAccountFromRecord);
   selectedAccountId = accounts[0].id;
-  selectedPersonaId = personas[0].id;
+  selectedPersonaId = recommendedPersona(accounts[0]).id;
   render();
   showToast(`${accounts.length} accounts analyzed`);
   event.target.value = "";
@@ -383,7 +280,7 @@ function renderPersonas(account) {
 
 function renderNarrative(account, persona) {
   const signalNames = account.signals.slice(0, 2).map((signal) => signal.title.toLowerCase()).join(" and ");
-  els.narrative.textContent = `${account.name} is showing credible public signals around ${signalNames}. For a ${persona.label}, the OCI story should ${persona.hook}. The right outreach is not a generic cloud pitch; it should connect the account's public priorities to a practical next step: a focused architecture conversation, workload fit review, or AI/data readiness workshop.`;
+  els.narrative.textContent = `${account.name} is showing credible public signals around ${signalNames}. For a ${persona.label}, the OCI story should ${persona.hook}. The right outreach is not a generic cloud pitch; it should connect the account's public priorities to a practical next step: ${account.ociWedge || "a focused architecture conversation, workload fit review, or AI/data readiness workshop"}.`;
   els.outcomeList.innerHTML = account.outcomes.map(([term, value]) => `
     <div>
       <dt>${escapeHtml(term)}</dt>
@@ -399,9 +296,9 @@ function renderEmail(account, persona) {
   const body = [
     `Hi {{first_name}},`,
     "",
-    `I noticed ${account.name} has been publicly discussing ${primary.title.toLowerCase()} and ${secondary.title.toLowerCase()}. For ${account.industry.toLowerCase()} teams, those signals usually create a practical question: how do we move faster without adding infrastructure complexity, cost, or risk?`,
+    `I noticed ${account.name} is a strong fit for an OCI conversation because ${account.arrPotential || `${primary.title.toLowerCase()} and ${secondary.title.toLowerCase()} are showing up as account signals`}`,
     "",
-    `For a ${persona.label}, I think the relevant OCI conversation is how to ${persona.hook}. OCI can help frame the path across cloud infrastructure, data services, AI readiness, and operating controls, depending on which workloads matter most right now.`,
+    `For a ${persona.label}, I think the relevant OCI conversation is how to ${persona.hook}. The wedge I would lead with is ${account.ociWedge || "cloud infrastructure, data services, AI readiness, and operating controls"}, depending on which workloads matter most right now.`,
     "",
     "Would it be useful to compare notes for 20 minutes and identify one workload or initiative where OCI could support the outcome your team is already pursuing?",
     "",
@@ -423,8 +320,14 @@ function selectedPersona() {
 }
 
 function recommendedPersona(account) {
-  if (account.tags.includes("security")) return personas.find((persona) => persona.id === "ciso");
-  if (account.tags.includes("ai")) return personas.find((persona) => persona.id === "data-ai");
+  if (account.targetPersonaId) return personas.find((persona) => persona.id === account.targetPersonaId) || personas[0];
+  const text = `${account.industry} ${account.arrPotential} ${account.ociWedge}`.toLowerCase();
+  if (/(data & ai|data\/ai|gpu\/ai|gpu|ai\/robotics|data science|forecasting|real-world data|robotics|vision)/.test(text)) {
+    return personas.find((persona) => persona.id === "data-ai");
+  }
+  if (/(bank|credit|financial|regulated|health|insurance|ransomware|compliance|secure|security)/.test(text)) {
+    return personas.find((persona) => persona.id === "ciso");
+  }
   if (account.tags.includes("modernization")) return personas.find((persona) => persona.id === "vp-infra");
   return personas[0];
 }
@@ -448,14 +351,25 @@ function signalLabel(type) {
 function parseCsvAccounts(text) {
   const lines = text.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
   if (!lines.length) return [];
-  const first = splitCsvLine(lines[0]).map((value) => value.toLowerCase());
-  const hasHeader = first.some((value) => ["account", "account name", "company", "company name", "name"].includes(value));
+  const first = splitCsvLine(lines[0]).map(normalizeHeader);
+  const hasHeader = first.some((value) => ["account", "accountname", "company", "companyname", "name"].includes(value));
   const header = hasHeader ? first : [];
-  const accountIndex = hasHeader
-    ? Math.max(header.findIndex((value) => ["account", "account name", "company", "company name", "name"].includes(value)), 0)
-    : 0;
   const dataLines = hasHeader ? lines.slice(1) : lines;
-  return [...new Set(dataLines.map((line) => splitCsvLine(line)[accountIndex]).filter(Boolean))].slice(0, 50);
+  const records = dataLines.map((line) => {
+    const values = splitCsvLine(line);
+    if (!hasHeader) return { account: values[0] || "" };
+    return header.reduce((record, key, index) => {
+      record[key] = values[index] || "";
+      return record;
+    }, {});
+  });
+  const seen = new Set();
+  return records.filter((record) => {
+    const name = accountNameFromRecord(record);
+    if (!name || seen.has(name.toLowerCase())) return false;
+    seen.add(name.toLowerCase());
+    return true;
+  }).slice(0, 50);
 }
 
 function splitCsvLine(line) {
@@ -481,18 +395,96 @@ function splitCsvLine(line) {
   return values.map((value) => value.replace(/^"|"$/g, ""));
 }
 
-function createAccountFromName(name, index) {
-  const templates = sampleAccounts[index % sampleAccounts.length];
-  const cleanName = name || `Uploaded Account ${index + 1}`;
+function createAccountFromRecord(record, index) {
+  const cleanName = accountNameFromRecord(record) || `Uploaded Account ${index + 1}`;
+  const rank = Number(record.rank) || index + 1;
+  const industry = valueFromRecord(record, ["industry"]) || "Unknown industry";
+  const arrPotential = valueFromRecord(record, ["whythishas500karrpotential", "whythishasarrpotential", "arrpotential", "territorynotes", "notes"]) || `${cleanName} has been enriched with a demo signal profile based on public-account research patterns.`;
+  const ociWedge = valueFromRecord(record, ["bestociwedge", "ociwedge", "wedge", "usecase"]) || "OCI data platform, AI services, database modernization, and resilient infrastructure";
+  const targetPersonaId = personaIdFromText(valueFromRecord(record, ["targetpersona", "persona"]));
+  const tags = tagsFromText(`${industry} ${arrPotential} ${ociWedge}`);
   return {
-    ...templates,
     id: slugify(cleanName),
     name: cleanName,
-    score: Math.max(64, Math.min(96, templates.score - (index % 5) * 3)),
-    summary: `${cleanName} has been enriched with a demo signal profile based on public-account research patterns. Replace these seeded signals with live research output when the ingestion pipeline is connected.`,
-    signals: templates.signals.map((signal) => ({ ...signal })),
-    outcomes: templates.outcomes.map((outcome) => [...outcome])
+    industry,
+    score: scoreFromRank(rank),
+    owner: `Rank #${rank} ARR opportunity`,
+    rank,
+    arrPotential,
+    ociWedge,
+    targetPersonaId,
+    tags,
+    summary: arrPotential,
+    signals: [
+      {
+        type: tags[0] || "modernization",
+        title: `$500K ARR potential`,
+        detail: arrPotential,
+        source: `Uploaded account ranking #${rank}`
+      },
+      {
+        type: tags[1] || tags[0] || "modernization",
+        title: "Best OCI wedge",
+        detail: ociWedge,
+        source: "Account planning CSV"
+      },
+      {
+        type: tags.includes("security") ? "security" : "modernization",
+        title: "Account priority",
+        detail: `${cleanName} is ranked #${rank} in the uploaded territory plan, indicating a high-priority outreach motion for this patch.`,
+        source: "Territory prioritization"
+      }
+    ],
+    outcomes: outcomesFromWedge(ociWedge)
   };
+}
+
+function accountNameFromRecord(record) {
+  return valueFromRecord(record, ["account", "accountname", "company", "companyname", "name"]);
+}
+
+function valueFromRecord(record, keys) {
+  for (const key of keys) {
+    if (record[key]) return String(record[key]).trim();
+    const matchingKey = Object.keys(record).find((recordKey) => normalizeHeader(recordKey) === key);
+    if (matchingKey && record[matchingKey]) return String(record[matchingKey]).trim();
+  }
+  return "";
+}
+
+function normalizeHeader(value) {
+  return String(value).toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function scoreFromRank(rank) {
+  return Math.max(68, Math.min(98, 101 - rank * 3));
+}
+
+function personaIdFromText(value) {
+  const text = String(value || "").toLowerCase();
+  if (text.includes("ciso") || text.includes("security")) return "ciso";
+  if (text.includes("data") || text.includes("ai")) return "data-ai";
+  if (text.includes("infra") || text.includes("infrastructure")) return "vp-infra";
+  if (text.includes("cio")) return "cio";
+  return "";
+}
+
+function tagsFromText(value) {
+  const text = String(value).toLowerCase();
+  const tags = [];
+  if (/(ai|gpu|data science|analytics|forecasting|robotics|vision|lakehouse|machine learning|real-world data)/.test(text)) tags.push("ai");
+  if (/(secure|regulated|compliance|ransomware|bank|credit|health|insurance|dr|disaster recovery|landing zone)/.test(text)) tags.push("security");
+  if (/(modernization|database|vmware|saas|app hosting|edge|store systems|workloads|hpc|engineering|iot|monitoring)/.test(text)) tags.push("modernization");
+  if (/(cost|performance|optimization|arr|operating-model|operating model)/.test(text)) tags.push("cost");
+  return tags.length ? [...new Set(tags)] : ["modernization"];
+}
+
+function outcomesFromWedge(wedge) {
+  const parts = wedge.split(",").map((part) => part.trim()).filter(Boolean).slice(0, 4);
+  return parts.map((part) => [
+    part.length > 22 ? `${part.slice(0, 21)}...` : part,
+    `Use ${part} to connect the account's public buying signal to a concrete OCI next step.`
+  ]);
 }
 
 function slugify(value) {
